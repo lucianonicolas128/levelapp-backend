@@ -30,7 +30,7 @@ var port = 3700;
 /* const server = http.createServer(app); */
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/levelapp' ,{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://lucianonicolas:nosleep.14@levelapp-2flgr.gcp.mongodb.net/test?retryWrites=true&w=majority' ,{ useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => {
         	console.log("Conexión a la base de datos establecida satisfactoriamente...");
 
