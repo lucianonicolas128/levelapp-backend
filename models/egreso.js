@@ -3,14 +3,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var VentaSchema = Schema({
+var EgresoSchema = Schema({
 	fecha: String,
-	cliente: String,
+	proveedor: String,
 	pedido: String,
 	descripcion: String,
 	monto: Number,
-    saldo: Number,
-    entregado: Boolean
 });
 
-module.exports = mongoose.model('Venta', VentaSchema);
+module.exports = mongoose.model('Venta', EgresoSchema);

@@ -1,7 +1,7 @@
 'use strict'
 
 var express = require('express');
-var VentaController = require('../controllers/venta');
+var EgresoController = require('../controllers/egreso');
 var router = express.Router();
 var crypto = require('crypto')
 var multer = require('multer');
@@ -26,12 +26,12 @@ var mul_upload = multer({dest: './uploads/albums',storage});
 
 
 
-router.get('/home', VentaController.home);
-router.post('/test', VentaController.test);
-router.post('/save-venta', VentaController.saveVenta);
-router.get('/venta/:id?', VentaController.getVenta);
-router.get('/ventas', VentaController.getVentas);
-router.put('/venta/:id', VentaController.updateVenta);
-router.delete('/venta/:id', VentaController.deleteVenta);
+router.get('/home', EgresoController.home);
+router.post('/test', EgresoController.test);
+router.post('/save-egreso', EgresoController.saveegreso);
+router.get('/egreso/:id?', EgresoController.getegreso);
+router.get('/egresos', EgresoController.getegresos);
+router.put('/egreso/:id', EgresoController.updateegreso);
+router.delete('/egreso/:id', EgresoController.deleteegreso);
 
 module.exports = router;

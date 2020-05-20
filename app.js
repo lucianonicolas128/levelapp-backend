@@ -8,6 +8,7 @@ var app = express();
 // Cargar archivos rutas
 var ventas_routes = require('./routes/venta');
 var productos_routes = require('./routes/producto');
+var egresos_routes = require('./routes/egreso');
 
 // Middlewares
 app.use(bodyParser.urlencoded({extended:false}));
@@ -25,6 +26,7 @@ app.use((req, res, next) =>{
 // Rutas
 app.use('/api', ventas_routes);
 app.use('/api', productos_routes);
+app.use('/api', egresos_routes);
 
 // Exportar
 module.exports = app;
