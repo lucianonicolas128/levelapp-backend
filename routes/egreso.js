@@ -6,10 +6,10 @@ var routerEgreso = express.Router();
 var crypto = require('crypto')
 var multer = require('multer');
 
-router.post('/save-egreso', EgresoController.saveEgreso);
-router.get('/egreso/:id?', EgresoController.getEgreso);
-router.get('/egresos', EgresoController.getEgresos);
-router.put('/egreso/:id', EgresoController.updateEgreso);
-router.delete('/egreso/:id', EgresoController.deleteEgreso);
+routerEgreso.post('/save-egreso', EgresoController.saveEgreso);
+routerEgreso.get('/egreso/:id?', EgresoController.getEgreso);
+routerEgreso.get('/egresos', EgresoController.getEgresos);
+routerEgreso.put('/egreso/:id', EgresoController.updateEgreso);
+routerEgreso.delete('/egreso/:id', EgresoController.deleteEgreso);
 
 module.exports = routerEgreso;
