@@ -6,7 +6,7 @@ var routerEgreso = express.Router();
 var crypto = require('crypto')
 var multer = require('multer');
 
-router.post('/save-egreso', EgresoController.saveEgreso);
+/* router.post('/save-egreso', EgresoController.saveEgreso); */
 router.get('/egreso/:id?', EgresoController.getEgreso);
 router.get('/egresos', EgresoController.getEgresos);
 router.put('/egreso/:id', EgresoController.updateEgreso);
