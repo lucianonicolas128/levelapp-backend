@@ -2,7 +2,7 @@
 
 var express = require('express');
 var EgresoController = require('../controllers/egreso');
-var router = express.Router();
+var routerEgreso = express.Router();
 var crypto = require('crypto')
 var multer = require('multer');
 const storage = multer.diskStorage({
