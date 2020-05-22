@@ -11,4 +11,4 @@ var EgresoSchema = Schema({
 	monto: Number,
 });
 
-module.exports = mongoose.model('Venta', EgresoSchema);
+module.exports = mongoose.model('Egreso', EgresoSchema);
