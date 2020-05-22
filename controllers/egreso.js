@@ -5,18 +5,15 @@ var fs = require('fs');
 var path = require('path');
 
 var controller = {
-
     saveEgreso: function(req, res){
         var egreso = new Egreso();
         var params = req.body;
 
         egreso.fecha = params.fecha;
-        egreso.cliente = params.cliente;
+        egreso.proveedor = params.proveedor;
         egreso.pedido = params.pedido;
         egreso.descripcion = params.descripcion;
         egreso.monto = params.monto;
-        egreso.saldo = params.saldo;
-        egreso.entregado = params.entregado;
 
         egreso.save((err, egresoStored) =>{
             if(err) return res.status(500).send({message: 'Error al guardar el egreso.'})
