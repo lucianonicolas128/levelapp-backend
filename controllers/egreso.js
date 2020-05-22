@@ -5,19 +5,6 @@ var fs = require('fs');
 var path = require('path');
 
 var controller = {
-    home: function(req, res){
-        return res.status(200).send({
-            message: 'Soy la home'
-        });
-
-    },
-
-    test: function(req, res){
-        return res.status(200).send({
-            message: 'Soy el método test del controlador de egreso'
-        });
-
-    },
 
     saveEgreso: function(req, res){
         var egreso = new Egreso();
