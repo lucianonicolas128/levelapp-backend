@@ -7,7 +7,7 @@ var crypto = require('crypto')
 var multer = require('multer');
 const storage = multer.diskStorage({
 
-/* SOLUCIONA PROBLEMA DEL MULTIPARTY */
+/* SOLUCIONA PROBLEMA DEL MULTIPARTY sadasdasd */
 
 destination(req, file, cb) {
     cb(null, './uploads/albums');
