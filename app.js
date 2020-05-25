@@ -9,6 +9,7 @@ var app = express();
 var ventas_routes = require('./routes/venta');
 var productos_routes = require('./routes/producto');
 var egresos_routes = require('./routes/egreso');
+var clientes_routes = require('./routes/cliente');
 
 // Middlewares
 app.use(bodyParser.urlencoded({extended:false}));
@@ -27,6 +28,7 @@ app.use((req, res, next) =>{
 app.use('/api', ventas_routes);
 app.use('/api', productos_routes);
 app.use('/api', egresos_routes);
+app.use('/api', clientes_routes);
 
 // Exportar
 module.exports = app;
