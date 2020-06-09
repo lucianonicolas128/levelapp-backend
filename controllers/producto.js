@@ -15,7 +15,7 @@ var controller = {
         producto.categoria = params.categoria;
         producto.costo = params.costo;
         producto.precio = params.precio;
-        producto.imagen = null;
+        producto.imagen = params.imagen;
 
         producto.save((err, productoStored) =>{
             if(err) return res.status(500).send({message: 'Error al guardar el producto.'})
@@ -75,9 +75,54 @@ var controller = {
                 producto: productoRemoved
             });
         });
+    },
+
+    uploadImage: function(req, res){
+        var productoId = req.params.id;
+		var fileName = 'Imagen no subida...';
+		if(req.file){
+        
+            var file_path = req.file.path;
+            var file_split = file_path.split('\\');
+            var file_name = file_split[2];
+            var ext_split = req.file.originalname.split('\.');
+            var file_ext = ext_split[1]
+        
+            if(file_ext== 'png' || file_ext== 'gif' || file_ext== 'jpg'){
+              Producto.findByIdAndUpdate(productoId, {image:file_name}, (err, productoUpdated) => {
+        
+                    if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
+
+                    if(!productoUpdated){        
+                        res.status(404).send({message: 'No se ha podido actualizar el album'});
+                    }else{
+                        res.status(200).send({producto: productoUpdated});
+                    }
+                });
+            }else{
+                fs.unlink(file_path, (err) => {
+                    return res.status(200).send({message: 'La extension no es valida'});
+                });
+            }        
+          }else{
+            res.status(200).send({message: 'No has subido ninguna imagen..'});
+        }
+    },
+
+    getImageFile: function(req,res){
+        var file = req.params.image;
+        var path_file = './uploads/productos/'+file;
+
+        fs.exists(path_file, (exists) =>{
+            if(exists){
+                return res.sendFile(path.resolve(path_file))
+            }else{
+                return res.status(200).send({
+                    message: 'No existe la imagen...'
+                })
+            }
+        })
     }
-
 }
-
 
 module.exports = controller;

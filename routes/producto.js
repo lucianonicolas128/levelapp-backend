@@ -29,6 +29,9 @@ routerProducto.get('/producto/:id?', ProductoController.getProducto);
 routerProducto.get('/productos', ProductoController.getProductos);
 routerProducto.put('/producto/:id', ProductoController.updateProducto);
 routerProducto.delete('/producto/:id', ProductoController.deleteProducto);
+routerProducto.post('/upload-image-album/:id', mul_upload.single('image'), ProductoController.uploadImage);
+routerProducto.get('/get-image/:image', ProductoController.getImageFile);
+
 
 module.exports = routerProducto;
 
