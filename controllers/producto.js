@@ -81,7 +81,6 @@ var controller = {
         var productoId = req.params.id;
 		var fileName = 'Imagen no subida...';
 		if(req.file){
-        
             var file_path = req.file.path;
             var file_split = file_path.split('\\');
             var file_name = file_split[2];
