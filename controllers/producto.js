@@ -88,7 +88,7 @@ var controller = {
             var file_ext = ext_split[1]
         
             if(file_ext== 'png' || file_ext== 'gif' || file_ext== 'jpg'){
-              Producto.findByIdAndUpdate(productoId, {image:file_name}, (err, productoUpdated) => {
+              Producto.findByIdAndUpdate(productoId, {imagen:file_name}, (err, productoUpdated) => {
         
                     if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
 
@@ -109,7 +109,7 @@ var controller = {
     },
 
     getImageFile: function(req,res){
-        var file = req.params.image;
+        var file = req.params.imagen;
         var path_file = './uploads/productos/'+file;
 
         fs.exists(path_file, (exists) =>{
