@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
 /* SOLUCIONA PROBLEMA DEL MULTIPARTY sadasdasd */
 
 destination(req, file, cb) {
-    cb(null, './uploads/albums');
+    cb(null, './uploads/productos');
     },
 
     filename(req, file = {}, cb) {
@@ -22,7 +22,7 @@ destination(req, file, cb) {
     });
     },
 });
-var mul_upload = multer({dest: './uploads/albums',storage});
+var mul_upload = multer({dest: './uploads/productos',storage});
 
 routerProducto.post('/save-producto', ProductoController.saveProducto);
 routerProducto.get('/producto/:id?', ProductoController.getProducto);
