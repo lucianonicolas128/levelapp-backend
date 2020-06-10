@@ -33,6 +33,7 @@ routerProducto.post('/upload-image-album/:id', mul_upload.single('image'), Produ
 routerProducto.get('/get-image/:image', ProductoController.getImageFile);
 
 
+
 module.exports = routerProducto;
 
     
