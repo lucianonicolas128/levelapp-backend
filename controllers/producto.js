@@ -15,7 +15,7 @@ var controller = {
         producto.categoria = params.categoria;
         producto.costo = params.costo;
         producto.precio = params.precio;
-        producto.imagen = params.imagen;
+        producto.image = params.image;
 
         producto.save((err, productoStored) =>{
             if(err) return res.status(500).send({message: 'Error al guardar el producto.'})
@@ -109,7 +109,7 @@ var controller = {
     },
 
     getImageFile: function(req,res){
-        var file = req.params.imagen;
+        var file = req.params.image;
         var path_file = './uploads/productos/'+file;
 
         fs.exists(path_file, (exists) =>{
