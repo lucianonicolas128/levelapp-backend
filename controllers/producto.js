@@ -8,14 +8,14 @@ var controller = {
     
     saveProducto: function(req, res){
         var producto = new Producto();
-        var params = req.body;
 
+        var params = req.body;
         producto.nombre = params.nombre;
         producto.descripcion = params.descripcion;
         producto.categoria = params.categoria;
         producto.costo = params.costo;
         producto.precio = params.precio;
-        producto.image = params.image;
+        producto.image = null;
 
         producto.save((err, productoStored) =>{
             if(err) return res.status(500).send({message: 'Error al guardar el producto.'})
@@ -88,7 +88,7 @@ var controller = {
             var file_ext = ext_split[1]
         
             if(file_ext== 'png' || file_ext== 'gif' || file_ext== 'jpg'){
-              Producto.findByIdAndUpdate(productoId, {imagen:file_name}, (err, productoUpdated) => {
+              Producto.findByIdAndUpdate(productoId, {image:file_name}, (err, productoUpdated) => {
         
                     if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
 
