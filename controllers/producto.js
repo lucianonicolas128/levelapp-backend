@@ -8,8 +8,8 @@ var controller = {
     
     saveProducto: function(req, res){
         var producto = new Producto();
-
         var params = req.body;
+        
         producto.nombre = params.nombre;
         producto.descripcion = params.descripcion;
         producto.categoria = params.categoria;

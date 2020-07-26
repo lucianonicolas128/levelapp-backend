@@ -3,6 +3,7 @@
 var Venta = require('../models/venta');
 var fs = require('fs');
 var path = require('path');
+/* var Cliente = require('../models/cliente'); */
 
 var controller = {
     home: function(req, res){
@@ -22,6 +23,7 @@ var controller = {
     saveVenta: function(req, res){
         var venta = new Venta();
         var params = req.body;
+        /* var cliente = new Cliente(); */
 
         venta.fecha = params.fecha;
         venta.cliente = params.cliente;
@@ -46,10 +48,16 @@ var controller = {
             if(err) return res.status(500).send({message: 'Error al devolver los datos.'});
 
             if(!venta) return res.status(404).send({message: 'La venta no existe'});
-
+/* 
+            Cliente.populate(ventas, {path: "cliente"}, function(err,ventas){
+                return res.status(200).send({
+                    venta
+                });
+            }) */
             return res.status(200).send({
                 venta
             });
+            
         })
     },
 
