@@ -23,6 +23,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "install": "^0.13.0",
     "nodemon": "^2.0.3",
-    "npm": "^6.14.5"
+    "npm": "^6.14.6"
   }
 }
