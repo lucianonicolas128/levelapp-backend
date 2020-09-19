@@ -9,8 +9,9 @@ var controller = {
         var material = new Material();
         var params = req.body;
 
-        material.nombre = params.nombre;
-        material.costo = params.costo;
+        material.name = params.name;
+        material.price = params.price;
+        material.category = params.category;
 
         material.save((err, materialStored) => {
             if(err) return res.status(500).sent({message: 'Error al guardar el material'});
@@ -70,3 +71,5 @@ var controller = {
 
     
 }
+
+module.exports = controller;

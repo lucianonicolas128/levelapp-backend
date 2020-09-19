@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var MaterialSchema = Schema({
-    nombre: String,
-    costo: Number
+    name: String,
+    price: Number,
+    category: String
 
 });
 
