@@ -12,6 +12,7 @@ var egresos_routes = require('./routes/egreso');
 var clientes_routes = require('./routes/cliente');
 var material_routes = require('./routes/material');
 
+
 // Middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
