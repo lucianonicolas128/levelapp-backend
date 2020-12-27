@@ -36,7 +36,7 @@ var controller = {
     },
 
     getClientes: function(req, res){
-        Cliente.find({}).sort('-nombre').exec((err, clientes) =>{
+        Cliente.find({}).sort('nombre').exec((err, clientes) =>{
             if(err) return res.status(500).send({message: 'Error al devolver los datos'});
             
             if(!clientes) return res.status(404).send({message: 'No hay clientes para mostrar'});
