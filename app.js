@@ -11,6 +11,7 @@ var productos_routes = require('./routes/producto');
 var egresos_routes = require('./routes/egreso');
 var clientes_routes = require('./routes/cliente');
 var material_routes = require('./routes/material');
+var preferences_routes = require('./routes/preferences')
 
 
 // Middlewares
@@ -32,6 +33,7 @@ app.use('/api', productos_routes);
 app.use('/api', egresos_routes);
 app.use('/api', clientes_routes);
 app.use('/api', material_routes);
+app.use('/api', preferences_routes);
 
 // Exportar
 module.exports = app;

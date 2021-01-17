@@ -43,6 +43,14 @@ var controller = {
             return res.status(200).send({preferences});
         })
     },
+
+    getPreferenceses: function(req, res) {
+        Preferences.find({}).sort('-nameCommerce').exec((err, preferences) => {
+            if(err) return res.status(500).send({message: 'Error al devolver los datos'});
+            if(!preferences) return res.status(404).sent({message: 'No hay preferencias para mostrar'});
+            return res.status(200).send({preferences});
+        })
+    },
     
     updatePreferences: function(req, res){
         var preferencesId = req.params.id;

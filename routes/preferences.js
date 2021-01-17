@@ -26,6 +26,7 @@ var mul_upload = multer({dest: './uploads/preferences', storage});
 routerPreferences.post('/save-preferences', PreferencesController.savePreferences);
 routerPreferences.get('/preferences/:id', PreferencesController.getPreferences);
 routerPreferences.put('/preferences/:id', PreferencesController.updatePreferences);
+routerPreferences.get('/preferences', PreferencesController.getPreferenceses);
 routerPreferences.post('/upload-image-preferences-logo/:id', mul_upload.single('image'), PreferencesController.uploadImageLogo);
 routerPreferences.get('/get-image-preferences-logo/:image', PreferencesController.getImageFileLogo);
 routerPreferences.post('/upload-image-preferences-banner/:id', mul_upload.single('image'), PreferencesController.uploadImageBanner);
