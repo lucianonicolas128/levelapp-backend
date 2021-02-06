@@ -6,21 +6,21 @@ var path = require('path');
 /* var Cliente = require('../models/cliente'); */
 
 var controller = {
-    home: function(req, res){
+    home: function (req, res) {
         return res.status(200).send({
             message: 'Soy la home'
         });
 
     },
 
-    test: function(req, res){
+    test: function (req, res) {
         return res.status(200).send({
             message: 'Soy el método test del controlador de venta'
         });
 
     },
 
-    saveVenta: function(req, res){
+    saveVenta: function (req, res) {
         var venta = new Venta();
         var params = req.body;
         /* var cliente = new Cliente(); */
@@ -33,72 +33,56 @@ var controller = {
         venta.saldo = params.saldo;
         venta.entregado = params.entregado;
 
-        venta.save((err, ventaStored) =>{
-            if(err) return res.status(500).send({message: 'Error al guardar la venta.'})
-            if(!ventaStored) return res.status(404).send({message: 'No se ha podido guardar la venta.'})
-            return res.status(200).send({venta: ventaStored});
+        venta.save((err, ventaStored) => {
+            if (err) return res.status(500).send({ message: 'Error al guardar la venta.' })
+            if (!ventaStored) return res.status(404).send({ message: 'No se ha podido guardar la venta.' })
+            return res.status(200).send({ venta: ventaStored });
         });
     },
 
-    getVenta: function(req, res){
+    getVenta: function (req, res) {
         var ventaId = req.params.id;
-        if(ventaId == null) return res.status(404).send({message: 'La venta no existe.'});
-
-        Venta.findById(ventaId, (err, venta) =>{
-            if(err) return res.status(500).send({message: 'Error al devolver los datos.'});
-
-            if(!venta) return res.status(404).send({message: 'La venta no existe'});
-/* 
-            Cliente.populate(ventas, {path: "cliente"}, function(err,ventas){
-                return res.status(200).send({
-                    venta
-                });
-            }) */
+        if (ventaId == null) return res.status(404).send({ message: 'La venta no existe.' });
+        Venta.findById(ventaId, (err, venta) => {
+            if (err) return res.status(500).send({ message: 'Error al devolver los datos.' });
+            if (!venta) return res.status(404).send({ message: 'La venta no existe' });
             return res.status(200).send({
                 venta
             });
-            
         })
     },
 
-    getVentas: function(req, res){
-        Venta.find({}).sort('-fecha').exec((err, ventas) =>{
-            if(err) return res.status(500).send({message: 'Error al devolver los datos'});
-            
-            if(!ventas) return res.status(404).send({message: 'No hay ventas para mostrar'});
-            
-            return res.status(200).send({ventas});
+    getVentas: function (req, res) {
+        // Venta.find({$query: {ventas: req.ventas}, $orderby: {fecha: asc}}).exec((err, ventas) =>{
+        Venta.find({}).sort({fecha: -1}).exec((err, ventas) => {
+            if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
+            if (!ventas) return res.status(404).send({ message: 'No hay ventas para mostrar' });
+            return res.status(200).send({ ventas });
         })
     },
-
-    
-    updateVenta: function(req, res){
+    updateVenta: function (req, res) {
         var ventaId = req.params.id;
         var update = req.body;
 
-        Venta.findByIdAndUpdate(ventaId, update, {new:true}, (err, ventaUpdated) =>{
-            if(err) return res.status(500).send({message: 'Error al actualizar.'});
-            if(!ventaUpdated) return res.status(404).send({message: 'No existe la venta ha actualizar'});
+        Venta.findByIdAndUpdate(ventaId, update, { new: true }, (err, ventaUpdated) => {
+            if (err) return res.status(500).send({ message: 'Error al actualizar.' });
+            if (!ventaUpdated) return res.status(404).send({ message: 'No existe la venta ha actualizar' });
             return res.status(200).send({
                 venta: ventaUpdated
             })
         });
     },
 
-    deleteVenta: function(req, res){
+    deleteVenta: function (req, res) {
         var ventaId = req.params.id;
-        
-        Venta.findByIdAndRemove(ventaId, (err, ventaRemoved)=>{
-            if(err) return res.status(500).send({message: 'No se ha podido eliminar la venta'});
-            
-            if(!ventaRemoved) return res.status(404).send({message: 'No se puede eliminar esa venta'});
-
+        Venta.findByIdAndRemove(ventaId, (err, ventaRemoved) => {
+            if (err) return res.status(500).send({ message: 'No se ha podido eliminar la venta' });
+            if (!ventaRemoved) return res.status(404).send({ message: 'No se puede eliminar esa venta' });
             return res.status(200).send({
                 venta: ventaRemoved
             });
         });
     }
-
 }
 
 
