@@ -31,5 +31,6 @@ routerPreferences.post('/upload-image-preferences-logo/:id', mul_upload.single('
 routerPreferences.get('/get-image-preferences-logo/:image', PreferencesController.getImageFileLogo);
 routerPreferences.post('/upload-image-preferences-banner/:id', mul_upload.single('image'), PreferencesController.uploadImageBanner);
 routerPreferences.get('/get-image-preferences-banner/:image', PreferencesController.getImageFileBanner);
+routerPreferences.get('/preferenceses/:company', PreferencesController.getPreferencesCompany);
 
 module.exports = routerPreferences;

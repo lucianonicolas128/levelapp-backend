@@ -11,5 +11,6 @@ routerCliente.get('/cliente/:id?', ClienteController.getCliente);
 routerCliente.get('/clientes', ClienteController.getClientes);
 routerCliente.put('/cliente/:id', ClienteController.updateCliente);
 routerCliente.delete('/cliente/:id', ClienteController.deleteCliente);
+routerCliente.get('/clientes/:company', ClienteController.getClientesCompany);
 
 module.exports = routerCliente;

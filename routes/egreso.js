@@ -11,5 +11,6 @@ routerEgreso.get('/egreso/:id?', EgresoController.getEgreso);
 routerEgreso.get('/egresos', EgresoController.getEgresos);
 routerEgreso.put('/egreso/:id', EgresoController.updateEgreso);
 routerEgreso.delete('/egreso/:id', EgresoController.deleteEgreso);
+routerEgreso.get('/egresos/:company', EgresoController.getEgresosCompany);
 
 module.exports = routerEgreso;

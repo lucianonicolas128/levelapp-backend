@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 var PreferencesSchema = Schema({
+	company: String,
 	nameCommerce: String,
 	descriptionCommerce: String,
 	imageLogo: String,

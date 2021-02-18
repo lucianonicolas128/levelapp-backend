@@ -32,7 +32,7 @@ routerProducto.delete('/producto/:id', ProductoController.deleteProducto);
 routerProducto.post('/upload-image-album/:id', mul_upload.single('image'), ProductoController.uploadImage);
 /* routerProducto.post('/upload-image/:id', ProductoController.uploadImage); */
 routerProducto.get('/get-image/:image', ProductoController.getImageFile);
-
+routerProducto.get('/productos/:company', ProductoController.getProductosCompany);
 
 
 module.exports = routerProducto;
