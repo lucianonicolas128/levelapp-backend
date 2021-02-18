@@ -47,8 +47,8 @@ var controller = {
         Producto.find({}).sort('-categoria').exec((err, productos) => {
             if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
             if (!productos) return res.status(404).send({ message: 'No hay productos para mostrar' });
-            let productos = productos.filter(producto => producto.company === company);
-            return res.status(200).send({ productos });
+            let productosFiltrados = productos.filter(producto => producto.company === company);
+            return res.status(200).send({ productosFiltrados });
         })
     },
 

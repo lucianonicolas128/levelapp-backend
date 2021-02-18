@@ -22,8 +22,6 @@ const storage = multer.diskStorage({
 });
 var mul_upload = multer({ dest: './uploads/albums', storage });
 
-router.get('/home', VentaController.home);
-router.post('/test', VentaController.test);
 router.post('/save-venta', VentaController.saveVenta);
 router.get('/venta/:id?', VentaController.getVenta);
 router.get('/ventas', VentaController.getVentas);

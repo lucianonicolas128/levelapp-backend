@@ -45,8 +45,8 @@ var controller = {
         Egreso.find({}).sort('-fecha').exec((err, egresos) => {
             if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
             if (!egresos) return res.status(404).send({ message: 'No hay egresos para mostrar' });
-            let egresos = egresos.filter(egreso => egreso.company === company);
-            return res.status(200).send({ egresos });
+            let egresosFiltrados = egresos.filter(egreso => egreso.company === company);
+            return res.status(200).send({ egresosFiltrados });
         })
     },
 

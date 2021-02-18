@@ -50,8 +50,8 @@ var controller = {
         Venta.find({}).sort({ fecha: -1 }).exec((err, ventas) => {
             if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
             if (!ventas) return res.status(404).send({ message: 'No hay ventas para mostrar' });
-            let ventas = ventas.filter(ventas => ventas.company === company);
-            return res.status(200).send({ ventas });
+            let ventasFiltrados = ventas.filter(ventas => ventas.company === company);
+            return res.status(200).send({ ventasFiltrados });
         })
     },
 

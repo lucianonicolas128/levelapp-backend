@@ -43,8 +43,8 @@ var controller = {
         Cliente.find({}).sort('-cliente').exec((err, clientes) => {
             if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
             if (!clientes) return res.status(404).send({ message: 'No hay clientes para mostrar' });
-            let clientes = clientes.filter(cliente => cliente.company === company);
-            return res.status(200).send({ clientes });
+            let clientesFiltrados = clientes.filter(cliente => cliente.company === company);
+            return res.status(200).send({ clientesFiltrados });
         })
     },
 

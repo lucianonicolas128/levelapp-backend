@@ -55,8 +55,8 @@ var controller = {
         Preferences.findById(preferencesId, (err, preferences) => {
             if (err) return res.status(500).send({ message: 'Error al devolver los datos.' });
             if (!preferences) return res.status(404).send({ message: 'Las preferencias no existe' });
-            let preferences = preferences.filter(preferences => preferences.company === company);
-            return res.status(200).send({ preferences });
+            let preferencesFilter = preferences.filter(preferences => preferences.company === company);
+            return res.status(200).send({ preferencesFilter });
         })
     },
 
