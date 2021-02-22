@@ -40,7 +40,7 @@ var controller = {
     getClientesCompany: function (req, res) {
         var company = req.params.company;
         if (company === null) return res.status(404).send({ message: 'No se encuentra la Organizacion' });
-        Cliente.find({}).sort('-cliente').exec((err, clientes) => {
+        Cliente.find({}).sort('nombre').exec((err, clientes) => {
             if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
             if (!clientes) return res.status(404).send({ message: 'No hay clientes para mostrar' });
             let clientesFiltrados = clientes.filter(cliente => cliente.company === company);
