@@ -16,7 +16,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 		console.log("BD OK...");
-		app.listen(port, () => { console.log(`Run in localhost:${port}`); });
+		app.listen(port || 3000, () => { console.log(`Run in localhost:${port}`); });
 
 	})
 	.catch(err => console.log(err));
