@@ -3,31 +3,28 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
+const config = require('./config.js');
 
 var mongoose = require('mongoose');
 var app = require('./app');
-var port = 3700;
-const url = 'mongodb+srv://lucianonicolas:nosleep.14@levelapp-2flgr.gcp.mongodb.net/test?retryWrites=true&w=majority';
-// const url = 'mongodb://localhost:27017/levelapp';
+var port = 3000;
+var port2 = 3001;
+const url = `mongodb+srv://${config.USER}:${config.PASS}@${config.CLUSTER}/${config.BD}?retryWrites=true&w=majority`;
+const url_backup = `mongodb+srv://${config.USER}:${config.PASS}@${config.CLUSTER}/${config.BD2}?retryWrites=true&w=majority`;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(url ,{ useNewUrlParser: true, useUnifiedTopology: true })
-        .then(() => {
-        	console.log("Conexión a la base de datos establecida satisfactoriamente...");
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => {
+		console.log("BD OK...");
+		app.listen(port, () => { console.log(`Run in localhost:${port}`); });
 
-        	// Creacion del servidor
-        	app.listen(port, () => {
-        		console.log("Servidor corriendo correctamente en la url: localhost:3700");
-        	});
+	})
+	.catch(err => console.log(err));
 
-        })
-		.catch(err => console.log(err));
+// mongoose.connect(url_backup, { useNewUrlParser: true, useUnifiedTopology: true })
+// 	.then(() => {
+// 		console.log("BD Backup OK...");
+// 		app.listen(port2, () => { console.log(`Run in localhost:${port2}`); });
 
-	
-
-
-app.set('port', process.env.PORT);
-		
-app.listen(app.get('port'), () =>{
-	console.log(`server on port ${app.get('port')}`)
-})
+// 	})
+// 	.catch(err => console.log(err));

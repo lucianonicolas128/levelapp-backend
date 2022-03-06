@@ -6,12 +6,14 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // Cargar archivos rutas
-var ventas_routes = require('./routes/venta');
-var productos_routes = require('./routes/producto');
-var egresos_routes = require('./routes/egreso');
-var clientes_routes = require('./routes/cliente');
-var material_routes = require('./routes/material');
-var preferences_routes = require('./routes/preferences')
+var ventas_routes = require('./components/venta/venta.route');
+var productos_routes = require('./components/producto/producto.route');
+var egresos_routes = require('./components/egreso/egreso.route');
+var clientes_routes = require('./components/cliente/cliente.route');
+var material_routes = require('./components/material/material.route');
+var preferences_routes = require('./components/preferences/preferences.route')
+var categorias_routes = require('./components/categoria/categoria.route');
+var incidences_routes = require('./components/incidence/incidence.route');
 
 
 // Middlewares
@@ -34,6 +36,8 @@ app.use('/api', egresos_routes);
 app.use('/api', clientes_routes);
 app.use('/api', material_routes);
 app.use('/api', preferences_routes);
+app.use('/api', categorias_routes);
+app.use('/api', incidences_routes);
 
 // Exportar
 module.exports = app;
