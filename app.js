@@ -1,19 +1,21 @@
 'use strict'
 
-var express = require('express');
-var bodyParser = require('body-parser');
+let express = require('express');
+let bodyParser = require('body-parser');
 
-var app = express();
+let app = express();
 
 // Cargar archivos rutas
-var ventas_routes = require('./components/venta/venta.route');
-var productos_routes = require('./components/producto/producto.route');
-var egresos_routes = require('./components/egreso/egreso.route');
-var clientes_routes = require('./components/cliente/cliente.route');
-var material_routes = require('./components/material/material.route');
-var preferences_routes = require('./components/preferences/preferences.route')
-var categorias_routes = require('./components/categoria/categoria.route');
-var incidences_routes = require('./components/incidence/incidence.route');
+let ventas_routes = require('./components/venta/venta.route');
+let productos_routes = require('./components/producto/producto.route');
+let egresos_routes = require('./components/egreso/egreso.route');
+let clientes_routes = require('./components/cliente/cliente.route');
+let material_routes = require('./components/material/material.route');
+let preferences_routes = require('./components/preferences/preferences.route')
+let categorias_routes = require('./components/categoria/categoria.route');
+let incidences_routes = require('./components/incidence/incidence.route');
+let registros_routes = require('./components/registros/registros.route');
+let entidades_routes = require('./components/entidades/entidades.route');
 
 
 // Middlewares
@@ -38,6 +40,8 @@ app.use('/api', material_routes);
 app.use('/api', preferences_routes);
 app.use('/api', categorias_routes);
 app.use('/api', incidences_routes);
+app.use('/api', registros_routes);
+app.use('/api', entidades_routes);
 
 // Exportar
 module.exports = app;

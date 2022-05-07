@@ -11,7 +11,7 @@ var port = 3000;
 var port2 = 3001;
 const url = `mongodb+srv://${config.USER}:${config.PASS}@${config.CLUSTER}/${config.BD}?retryWrites=true&w=majority`;
 const url_backup = `mongodb+srv://${config.USER}:${config.PASS}@${config.CLUSTER}/${config.BD2}?retryWrites=true&w=majority`;
-
+console.log(url)
 mongoose.Promise = global.Promise;
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
